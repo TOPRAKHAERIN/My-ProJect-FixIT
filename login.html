@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>เข้าสู่ระบบ | Fixly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { ink: '#17213b', brand: '#4f46e5' }, boxShadow: { soft: '0 18px 50px -22px rgba(30, 41, 59, .28)' } } } }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-700">
+    <main class="mx-auto grid min-h-screen max-w-6xl items-center gap-8 px-5 py-10 lg:grid-cols-[1.1fr_.9fr]">
+      <section class="rounded-3xl bg-ink p-8 text-white shadow-soft sm:p-12">0
+        <a href="login.html" class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-white text-xl font-bold text-brand">F</span><span><b class="block text-xl leading-5">Fixly</b><small class="text-slate-300">ศูนย์แจ้งซ่อมวิทยาลัย</small></span></a>
+        <p class="mt-16 text-sm font-semibold text-emerald-300">แจ้งเรื่องง่าย ติดตามได้ชัดเจน</p>
+        <h1 class="mt-3 text-3xl font-bold leading-tight sm:text-4xl">ทุกปัญหาในวิทยาลัย<br />เริ่มแก้ได้จากที่นี่</h1>
+        <p class="mt-5 max-w-md text-slate-300">เข้าสู่ระบบด้วยรหัสนักศึกษาเพื่อแจ้งซ่อม ติดตามเฉพาะรายการของตัวเอง และรับการอัปเดตสถานะ</p>
+        <div class="mt-10 flex gap-3 text-sm text-slate-300"><span class="rounded-xl bg-white/10 px-3 py-2">⚡ รวดเร็ว</span><span class="rounded-xl bg-white/10 px-3 py-2">✓ ใช้งานง่าย</span></div>
+      </section>
+      <section class="rounded-3xl bg-white p-6 shadow-soft sm:p-9">
+        <div class="mb-7 flex rounded-xl bg-slate-100 p-1">
+          <button type="button" class="auth-tab active" data-tab="login">เข้าสู่ระบบ</button>
+          <button type="button" class="auth-tab" data-tab="register">สมัครสมาชิก</button>
+          <button type="button" class="auth-tab" data-tab="admin">ผู้ควบคุม</button>
+        </div>
+        <form id="loginForm">
+          <p class="text-sm font-semibold text-brand">ยินดีต้อนรับกลับมา</p><h2 class="mt-1 text-2xl font-bold text-ink">เข้าสู่ระบบ</h2><p class="mt-2 text-sm text-slate-500">กรอกรหัสนักศึกษาของคุณเพื่อไปต่อ</p>
+          <label class="mt-6 block text-sm font-medium">รหัสนักศึกษา<input id="loginStudentId" data-student-id required type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" autocomplete="off" class="field" placeholder="ตัวเลข 10 หลัก" /></label>
+          <p id="loginError" class="mt-3 hidden text-sm text-rose-600"></p>
+          <button class="mt-5 w-full rounded-xl bg-brand py-3 font-semibold text-white shadow-lg shadow-indigo-100 transition hover:bg-indigo-700" type="submit">เข้าสู่ระบบ</button>
+          <button class="mt-4 w-full text-sm font-medium text-brand hover:underline" data-switch="register" type="button">ยังไม่เคยสมัคร? สร้างบัญชีใหม่</button>
+        </form>
+        <form id="registerForm" class="hidden">
+          <p class="text-sm font-semibold text-brand">เริ่มใช้งาน Fixly</p><h2 class="mt-1 text-2xl font-bold text-ink">สมัครสมาชิก</h2><p class="mt-2 text-sm text-slate-500">ใช้ข้อมูลนี้เพียงครั้งเดียว แล้วครั้งถัดไปใช้รหัสนักศึกษาเข้าสู่ระบบได้เลย</p>
+          <div class="mt-6 space-y-4">
+            <label class="block text-sm font-medium">รหัสนักศึกษา<input id="registerStudentId" data-student-id required type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" autocomplete="off" class="field" placeholder="ตัวเลข 10 หลัก" /></label>
+            <label class="block text-sm font-medium">ชื่อ-นามสกุล<input id="registerName" required maxlength="80" class="field" placeholder="เช่น เด็กชายสมชาย ใจดี" /></label>
+            <label class="block text-sm font-medium">ชั้นเรียน / ห้อง<input id="registerClass" required maxlength="40" class="field" placeholder="เช่น ปวช. 2/1" /></label>
+          </div>
+          <p id="registerError" class="mt-3 hidden text-sm text-rose-600"></p>
+          <button class="mt-5 w-full rounded-xl bg-brand py-3 font-semibold text-white shadow-lg shadow-indigo-100 transition hover:bg-indigo-700" type="submit">สมัครและเริ่มใช้งาน</button>
+          <button class="mt-4 w-full text-sm font-medium text-brand hover:underline" data-switch="login" type="button">มีบัญชีแล้ว? เข้าสู่ระบบ</button>
+        </form>
+        <form id="adminLoginForm" class="hidden">
+          <p class="text-sm font-semibold text-brand">พื้นที่ผู้ควบคุม</p><h2 class="mt-1 text-2xl font-bold text-ink">เข้าสู่ระบบผู้ดูแล</h2><p class="mt-2 text-sm text-slate-500">สำหรับรับงาน อัปเดตสถานะ และดูรายการทั้งหมด</p>
+          <div class="mt-6 space-y-4">
+            <label class="block text-sm font-medium">ชื่อผู้ใช้<input id="adminUsername" required autocomplete="username" class="field" placeholder="ชื่อผู้ใช้ผู้ควบคุม" /></label>
+            <label class="block text-sm font-medium">รหัสผ่าน<input id="adminLoginPassword" required type="password" autocomplete="current-password" class="field" placeholder="รหัสผ่าน" /></label>
+          </div>
+          <p id="adminLoginError" class="mt-3 hidden text-sm text-rose-600"></p>
+          <button class="mt-5 w-full rounded-xl bg-ink py-3 font-semibold text-white transition hover:bg-slate-800" type="submit">เข้าสู่พื้นที่ผู้ควบคุม</button>
+          <button class="mt-4 w-full text-sm font-medium text-brand hover:underline" data-switch="login" type="button">กลับไปหน้าเข้าสู่ระบบนักเรียน</button>
+        </form>
+        <p class="mt-7 rounded-xl bg-amber-50 px-4 py-3 text-xs leading-5 text-amber-800">เวอร์ชันพื้นฐานนี้เก็บบัญชีไว้ในเบราว์เซอร์ของเครื่องที่ใช้งานเท่านั้น</p>
+      </section>
+    </main>
+    <script src="login.js"></script>
+  </body>
+</html>
